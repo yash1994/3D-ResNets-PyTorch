@@ -11,16 +11,16 @@ def get_training_set(opt, spatial_transform, temporal_transform,
 
     if opt.dataset == 'kinetics':
         training_data = Kinetics(
-            opt.video_path,
-            opt.annotation_path,
+            opt.training_video_path,
+            opt.training_annotation_path,
             'training',
             spatial_transform=spatial_transform,
             temporal_transform=temporal_transform,
             target_transform=target_transform)
     elif opt.dataset == 'activitynet':
         training_data = ActivityNet(
-            opt.video_path,
-            opt.annotation_path,
+            opt.training_video_path,
+            opt.training_annotation_path,
             'training',
             False,
             spatial_transform=spatial_transform,
@@ -28,24 +28,24 @@ def get_training_set(opt, spatial_transform, temporal_transform,
             target_transform=target_transform)
     elif opt.dataset == 'ucf101':
         training_data = UCF101(
-            opt.video_path,
-            opt.annotation_path,
+            opt.training_video_path,
+            opt.training_annotation_path,
             'training',
             spatial_transform=spatial_transform,
             temporal_transform=temporal_transform,
             target_transform=target_transform)
     elif opt.dataset == 'hmdb51':
         training_data = HMDB51(
-            opt.video_path,
-            opt.annotation_path,
+            opt.training_video_path,
+            opt.training_annotation_path,
             'training',
             spatial_transform=spatial_transform,
             temporal_transform=temporal_transform,
             target_transform=target_transform)
     elif opt.dataset == 'customnet':
         training_data = CustomNet(
-            opt.video_path,
-            opt.annotation_path,
+            opt.training_video_path,
+            opt.training_annotation_path,
             'training',
             False,
             spatial_transform=spatial_transform,
@@ -61,8 +61,8 @@ def get_validation_set(opt, spatial_transform, temporal_transform,
 
     if opt.dataset == 'kinetics':
         validation_data = Kinetics(
-            opt.video_path,
-            opt.annotation_path,
+            opt.validation_video_path,
+            opt.validation_annotation_path,
             'validation',
             opt.n_val_samples,
             spatial_transform,
@@ -71,8 +71,8 @@ def get_validation_set(opt, spatial_transform, temporal_transform,
             sample_duration=opt.sample_duration)
     elif opt.dataset == 'activitynet':
         validation_data = ActivityNet(
-            opt.video_path,
-            opt.annotation_path,
+            opt.validation_video_path,
+            opt.validation_annotation_path,
             'validation',
             False,
             opt.n_val_samples,
@@ -82,8 +82,8 @@ def get_validation_set(opt, spatial_transform, temporal_transform,
             sample_duration=opt.sample_duration)
     elif opt.dataset == 'ucf101':
         validation_data = UCF101(
-            opt.video_path,
-            opt.annotation_path,
+            opt.validation_video_path,
+            opt.validation_annotation_path,
             'validation',
             opt.n_val_samples,
             spatial_transform,
@@ -92,8 +92,8 @@ def get_validation_set(opt, spatial_transform, temporal_transform,
             sample_duration=opt.sample_duration)
     elif opt.dataset == 'hmdb51':
         validation_data = HMDB51(
-            opt.video_path,
-            opt.annotation_path,
+            opt.validation_video_path,
+            opt.validation_annotation_path,
             'validation',
             opt.n_val_samples,
             spatial_transform,
@@ -102,8 +102,8 @@ def get_validation_set(opt, spatial_transform, temporal_transform,
             sample_duration=opt.sample_duration)
     elif opt.dataset == 'customnet':
         validation_data = CustomNet(
-            opt.video_path,
-            opt.annotation_path,
+            opt.validation_video_path,
+            opt.validation_annotation_path,
             'validation',
             False,
             spatial_transform=spatial_transform,
@@ -122,7 +122,7 @@ def get_test_set(opt, spatial_transform, temporal_transform, target_transform):
         subset = 'testing'
     if opt.dataset == 'kinetics':
         test_data = Kinetics(
-            opt.video_path,
+            opt.testing_video_path,
             opt.annotation_path,
             subset,
             0,
@@ -132,7 +132,7 @@ def get_test_set(opt, spatial_transform, temporal_transform, target_transform):
             sample_duration=opt.sample_duration)
     elif opt.dataset == 'activitynet':
         test_data = ActivityNet(
-            opt.video_path,
+            opt.testing_video_path,
             opt.annotation_path,
             subset,
             True,
@@ -143,7 +143,7 @@ def get_test_set(opt, spatial_transform, temporal_transform, target_transform):
             sample_duration=opt.sample_duration)
     elif opt.dataset == 'ucf101':
         test_data = UCF101(
-            opt.video_path,
+            opt.testing_video_path,
             opt.annotation_path,
             subset,
             0,
@@ -153,7 +153,7 @@ def get_test_set(opt, spatial_transform, temporal_transform, target_transform):
             sample_duration=opt.sample_duration)
     elif opt.dataset == 'hmdb51':
         test_data = HMDB51(
-            opt.video_path,
+            opt.testing_video_path,
             opt.annotation_path,
             subset,
             0,

@@ -4,20 +4,30 @@ import argparse
 def parse_opts():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '--root_path',
-        default='/root/data/ActivityNet',
-        type=str,
-        help='Root directory path of data')
-    parser.add_argument(
-        '--video_path',
+        '--training_video_path',
         default='video_kinetics_jpg',
         type=str,
-        help='Directory path of Videos')
+        help='Directory path of training set of Videos')
     parser.add_argument(
-        '--annotation_path',
+        '--training_annotation_path',
         default='kinetics.json',
         type=str,
-        help='Annotation file path')
+        help='Annotation file path for training set')
+    parser.add_argument(
+        '--validation_video_path',
+        default='video_kinetics_jpg',
+        type=str,
+        help='Directory path of validation set of Videos')
+    parser.add_argument(
+        '--validation_annotation_path',
+        default='kinetics.json',
+        type=str,
+        help='Annotation file path for validation set')
+    parser.add_argument(
+        '--testing_video_path',
+        default='video_kinetics_jpg',
+        type=str,
+        help='Directory path of testing set of Videos')  
     parser.add_argument(
         '--result_path',
         default='results',
