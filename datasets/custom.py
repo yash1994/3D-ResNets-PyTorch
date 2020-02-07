@@ -116,7 +116,7 @@ def make_dataset(root_path, annotation_path, subset, n_samples_for_each_video,
         if i % 1000 == 0:
             print('dataset loading [{}/{}]'.format(i, len(video_names)))
 
-        video_path = os.path.join(root_path, video_names[i]).replace("(", "\(").replace(")", "\)")
+        video_path = os.path.join(root_path, video_names[i]))
         if not os.path.exists(video_path):
             continue
 
@@ -241,7 +241,7 @@ def make_custom_dataset(root_path, annotation_path, subset, sample_duration):
         if i % 1000 == 0:
             print('dataset loading [{}/{}]'.format(i, len(video_names)))
 
-        video_path = os.path.join(root_path, video_names[i])
+        video_path = os.path.join(root_path, video_names[i].replace("(", "\(").replace(")", "\)")
         if not os.path.exists(video_path):
             continue
 
