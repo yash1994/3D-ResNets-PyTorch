@@ -15,7 +15,7 @@ if __name__=="__main__":
     dst_directory_path = os.path.join(dst_dir_path, name)
 
     video_file_path = os.path.join(dir_path, file_name)
-    p = subprocess.Popen('ffprobe {}'.format(video_file_path),
+    p = subprocess.Popen('ffprobe {}'.format(video_file_path.replace("(", "\(").replace(")", "\)")),
                          shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     _, res = p.communicate()
     res = res.decode('utf-8')
