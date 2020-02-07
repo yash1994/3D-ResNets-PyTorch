@@ -259,7 +259,7 @@ def make_custom_dataset(root_path, annotation_path, subset, sample_duration):
             'video_id': video_names[i]
         }
 
-        sample['label'] = class_to_idx[" ".join(video_names[i].split("_")[:-1])]
+        sample['label'] = class_to_idx[video_names[i].split("##")[0]]
 
         step = sample_duration
         for j in range(begin_t, end_t, step):
