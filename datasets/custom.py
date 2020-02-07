@@ -227,9 +227,9 @@ def make_untrimmed_dataset(root_path, annotation_path, subset,
     return dataset, idx_to_class
 
 def make_custom_dataset(root_path, annotation_path, subset, sample_duration):
-    video_names = [j for j in os.listdir(root_path) if j != "results"]
+    video_names = [j for j in os.listdir(root_path) if "##" in j]
     class_to_idx = {}
-    class_names_list = list(set([" ".join(l.split("_")[:-1]) for l in video_names if l != "results"]))
+    class_names_list = list(set([vn.split("##")[0] for vn in video_names]))
     for i, class_name in enumerate(class_names_list):
         if class_name not in class_to_idx:
             class_to_idx[class_name] = i
