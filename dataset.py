@@ -108,7 +108,7 @@ def get_validation_set(opt, spatial_transform, temporal_transform,
             False,
             spatial_transform=spatial_transform,
             temporal_transform=temporal_transform,
-            target_transform=target_transform
+            target_transform=target_transform,
             class_map=training_class_map)        
     return validation_data
 
