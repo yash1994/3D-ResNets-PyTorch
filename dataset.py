@@ -56,7 +56,7 @@ def get_training_set(opt, spatial_transform, temporal_transform,
 
 
 def get_validation_set(opt, spatial_transform, temporal_transform,
-                       target_transform):
+                       target_transform, training_class_map):
     assert opt.dataset in ['kinetics', 'activitynet', 'ucf101', 'hmdb51', 'customnet']
 
     if opt.dataset == 'kinetics':
@@ -108,7 +108,8 @@ def get_validation_set(opt, spatial_transform, temporal_transform,
             False,
             spatial_transform=spatial_transform,
             temporal_transform=temporal_transform,
-            target_transform=target_transform)        
+            target_transform=target_transform
+            class_map=training_class_map)        
     return validation_data
 
 

@@ -226,16 +226,20 @@ def make_untrimmed_dataset(root_path, annotation_path, subset,
 
     return dataset, idx_to_class
 
-def make_custom_dataset(root_path, annotation_path, subset, sample_duration):
+def make_custom_dataset(root_path, annotation_path, subset, sample_duration, class_map):
     video_names = [j for j in os.listdir(root_path) if "##" in j]
-    class_to_idx = {}
-    class_names_list = list(set([vn.split("##")[0] for vn in video_names]))
-    for i, class_name in enumerate(class_names_list):
-        if class_name not in class_to_idx:
-            class_to_idx[class_name] = i
-    idx_to_class = {}
-    for name, label in class_to_idx.items():
-        idx_to_class[label] = name
+    if class_map is None:
+        class_to_idx = {}
+        class_names_list = list(set([vn.split("##")[0] for vn in video_names]))
+        for i, class_name in enumerate(class_names_list):
+            if class_name not in class_to_idx:
+                class_to_idx[class_name] = i
+        idx_to_class = {}
+        for name, label in class_to_idx.items():
+            idx_to_class[label] = name
+    else:
+        idx_to_class = class_map
+        class_to_idx = {v:k for k,v in idx_to_class.items()}
     dataset = []
     for i in range(len(video_names)):
         if i % 1000 == 0:
@@ -302,11 +306,12 @@ class CustomNet(data.Dataset):
                  temporal_transform=None,
                  target_transform=None,
                  sample_duration=16,
-                 get_loader=get_default_video_loader):
+                 get_loader=get_default_video_loader,
+                 class_map=None):
         
         self.data, self.class_names = make_custom_dataset(
             root_path, annotation_path, subset,
-            sample_duration) 
+            sample_duration, class_map) 
         self.spatial_transform = spatial_transform
         self.temporal_transform = temporal_transform
         self.target_transform = target_transform

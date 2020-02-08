@@ -102,7 +102,7 @@ if __name__ == '__main__':
         temporal_transform = LoopPadding(opt.sample_duration)
         target_transform = ClassLabel()
         validation_data = get_validation_set(
-            opt, spatial_transform, temporal_transform, target_transform)
+            opt, spatial_transform, temporal_transform, target_transform, training_data.class_names)
         val_loader = torch.utils.data.DataLoader(
             validation_data,
             batch_size=opt.batch_size,
