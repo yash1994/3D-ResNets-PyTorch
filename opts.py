@@ -86,15 +86,15 @@ def parse_opts():
     )
     parser.add_argument(
         '--learning_rate',
-        default=0.1,
+        default=0.0001,
         type=float,
         help=
         'Initial learning rate (divided by 10 while training by lr scheduler)')
-    parser.add_argument('--momentum', default=0.9, type=float, help='Momentum')
+    parser.add_argument('--momentum', default=0.95, type=float, help='Momentum')
     parser.add_argument(
         '--dampening', default=0.9, type=float, help='dampening of SGD')
     parser.add_argument(
-        '--weight_decay', default=1e-3, type=float, help='Weight Decay')
+        '--weight_decay', default=1e-6, type=float, help='Weight Decay')
     parser.add_argument(
         '--mean_dataset',
         default='activitynet',
@@ -113,7 +113,7 @@ def parse_opts():
     parser.set_defaults(std_norm=False)
     parser.add_argument(
         '--nesterov', action='store_true', help='Nesterov momentum')
-    parser.set_defaults(nesterov=False)
+    parser.set_defaults(nesterov=True)
     parser.add_argument(
         '--optimizer',
         default='sgd',
