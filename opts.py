@@ -237,6 +237,9 @@ def parse_opts():
         help='ResNeXt cardinality')
     parser.add_argument(
         '--manual_seed', default=1, type=int, help='Manually set random seed')
+    parser.add_argument(
+        '--per_class_stats', default=True, type=bool, help='Generate per class report on validation data every epoch'
+    )    
 
     args = parser.parse_args()
 
