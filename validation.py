@@ -58,7 +58,7 @@ def val_epoch(epoch, data_loader, model, criterion, opt, logger):
     losses = AverageMeter()
     accuracies = AverageMeter()
 
-    class_map = {v:k for k,v in data_loader.dataset.class_to_idx.items()}
+    class_map = {k:v for k,v in data_loader.dataset.class_names.items()}
 
     output_all = []
     target_all = []
