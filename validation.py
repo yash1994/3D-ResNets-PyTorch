@@ -1,9 +1,11 @@
 import torch
 from torch.autograd import Variable
 import torch.nn.functional as F
+import numpy as np
 import time
 import sys
-
+import os
+import csv
 from utils import AverageMeter, calculate_accuracy
 
 def per_class_stats_writer(predictions, targets, class_map, epoch):
@@ -102,7 +104,7 @@ def val_epoch(epoch, data_loader, model, criterion, opt, logger):
                     acc=accuracies))
 
         if opt.per_class_reports:
-            per_class_stats_writer(output_all, target_all, class_map, epoch)            
+            per_class_stats_writer(torch.cat(output_all), torch.cat(target_all), class_map, epoch)
 
     logger.log({'epoch': epoch, 'loss': losses.avg, 'acc': accuracies.avg})
 
